@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Urban Kicks | Premium Shoe Store — Dark Glass Header</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f9fc;
+      color: #1e1e2a;
+      line-height: 1.4;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* HEADER with dark glass style similar to footer (#111217) */
+    .nav-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(17, 18, 23, 0.88);  /* matching footer #111217 with transparency */
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.2s ease;
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-top: 18px;
+      padding-bottom: 18px;
+    }
+
+    /* logo on dark background - brighter gradient */
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffffff, #e2e2e8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      transition: opacity 0.2s;
+    }
+    .logo span {
+      background: linear-gradient(135deg, #e43f2f, #f39c12);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo:hover {
+      opacity: 0.85;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links li {
+      position: relative;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #e5e7eb;       /* light gray for dark header */
+      transition: color 0.25s ease;
+      font-size: 1rem;
+      padding-bottom: 6px;
+      display: inline-block;
+    }
+    /* professional underline animation - slide from center */
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 80%;
+      height: 2px;
+      background: #e43f2f;
+      border-radius: 4px;
+      transition: transform 0.25s ease;
+      transform-origin: center;
+    }
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+    .nav-links a:hover::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
+    /* nav icons - light color */
+    .nav-icons {
+      display: flex;
+      gap: 20px;
+      font-size: 1.2rem;
+    }
+    .nav-icons i {
+      cursor: default;
+      color: #e5e7eb;
+      transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      display: inline-block;
+    }
+    .nav-icons i:hover {
+      color: #e43f2f;
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    /* Hero section */
+    .hero {
+      margin: 56px 0 64px 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-content .badge {
+      background: #ffe6e2;
+      color: #e43f2f;
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #111;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #4a4e69;
+      max-width: 480px;
+      margin-bottom: 30px;
+    }
+    .btn {
+      background: #1e1e2a;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 48px;
+      font-weight: 600;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+    }
+    .btn i {
+      font-size: 0.9rem;
+    }
+    .btn:hover {
+      background: #e43f2f;
+      transform: translateY(-3px);
+      box-shadow: 0 16px 24px rgba(228, 63, 47, 0.2);
+    }
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-image img {
+      max-width: 100%;
+      width: 420px;
+      border-radius: 36px;
+      filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+    }
+
+    /* section title */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 60px 0 32px 0;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 48px;
+      height: 4px;
+      background: #e43f2f;
+      border-radius: 4px;
+    }
+
+    /* product grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 32px;
+      margin-bottom: 80px;
+    }
+
+    /* CARD DESIGN */
+    .product-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 36px -12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* image wrapper — fixed height */
+    .product-img-wrapper {
+      position: relative;
+      overflow: hidden;
+      background: #f0f0f4;
+      height: 280px;
+      border-radius: 28px 28px 0 0;
+    }
+
+    /* zoom effect on hover */
+    .product-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease-out;
+      will-change: transform;
+    }
+
+    .product-card:hover .product-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    /* DETAILS PANEL: bottom 15% height, transparent blur, no radius, only name, price and add button */
+    .hover-details-panel {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 15%;                    /* exactly 15% of image height */
+      min-height: 48px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 0;               /* no border radius */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      gap: 12px;
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      pointer-events: none;
+    }
+
+    .hover-details-panel .add-to-cart {
+      pointer-events: auto;
+    }
+
+    .product-card:hover .hover-details-panel {
+      transform: translateY(0);
+    }
+
+    .product-mini-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .product-mini-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: white;
+      letter-spacing: -0.2px;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+    }
+
+    .product-mini-price {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #ffd966;
+      line-height: 1.2;
+    }
+
+    .add-to-cart {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 40px;
+      padding: 6px 14px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.2s ease;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .add-to-cart i {
+      font-size: 0.7rem;
+    }
+
+    .add-to-cart:hover {
+      background: white;
+      color: #1e1e2a;
+      border-color: white;
+    }
+
+    /* static product info below card */
+    .product-info {
+      padding: 18px 18px 22px 18px;
+      background: white;
+    }
+    .product-title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #121212;
+    }
+    .product-price {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #e43f2f;
+      letter-spacing: -0.3px;
+    }
+    .product-price small {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #6c6f78;
+    }
+
+    /* Footer stays same dark #111217 */
+    .footer {
+      background: #111217;
+      color: #dddddd;
+      padding: 48px 0 32px;
+      margin-top: 60px;
+      border-top-left-radius: 32px;
+      border-top-right-radius: 32px;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .footer-col h4 {
+      color: white;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .footer-col p, .footer-col ul {
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+    .social-icons i {
+      font-size: 1.2rem;
+      margin-right: 16px;
+      transition: 0.2s;
+      cursor: default;
+    }
+    .social-icons i:hover {
+      color: #e43f2f;
+      transform: translateY(-2px);
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 40px;
+      font-size: 0.75rem;
+      opacity: 0.5;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 780px) {
+      .hero-content h1 {
+        font-size: 2.3rem;
+      }
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        gap: 20px;
+      }
+      .section-title {
+        font-size: 1.7rem;
+      }
+      .product-img-wrapper {
+        height: 240px;
+      }
+      .hover-details-panel {
+        height: 15%;
+        min-height: 44px;
+        padding: 0 10px;
+        gap: 8px;
+      }
+      .product-mini-name {
+        font-size: 0.75rem;
+      }
+      .product-mini-price {
+        font-size: 0.8rem;
+      }
+      .add-to-cart {
+        padding: 4px 10px;
+        font-size: 0.65rem;
+      }
+    }
+    @media (max-width: 520px) {
+      .container {
+        padding: 0 18px;
+      }
+      .products-grid {
+        gap: 20px;
+      }
+      .product-img-wrapper {
+        height: 220px;
+      }
+      .hover-details-panel {
+        min-height: 42px;
+      }
+      .nav-links a::after {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header with dark glass style matching footer -->
+<div class="nav-wrapper">
+  <div class="nav-container">
+    <div class="logo">URBAN<span>KICKS</span></div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Shop</a></li>
+      <li><a href="#">New Arrivals</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="nav-icons">
+      <i class="fas fa-search"></i>
+      <i class="fas fa-user"></i>
+      <i class="fas fa-shopping-bag"></i>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="badge"><i class="fas fa-fire"></i> Summer Collection 2025</div>
+      <h1>Step Into <br>Ultimate Comfort</h1>
+      <p>Engineered for performance & style. Discover the next generation of sneakers crafted with premium materials and futuristic design.</p>
+      <button class="btn">Shop Now <i class="fas fa-arrow-right"></i></button>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&h=500&fit=crop" alt="Hero Shoe">
+    </div>
+  </div>
+
+  <!-- Products Grid -->
+  <div>
+    <h2 class="section-title">Premium Footwear</h2>
+    <div class="products-grid">
+      
+      <!-- Product 1 - Nike Air Max Pulse -->
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop" alt="Nike Air Max">
+          <div class="hover-details-panel">
+            <div class="product-mini-info">
+              <span class="product-mini-name">Nike Air Max Pulse</span>
+              <span class="product-mini-price">$139.99</span>
+            </div>
+            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-title">Nike Air Max Pulse</div>
+          <div class="product-price">$139.99 <small>USD</small></div>
+        </div>
+      </div>
+
+      <!-- Product 2 - Adidas Ultraboost Light (fixed image URL) -->
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=500&h=500&fit=crop" alt="Adidas Ultraboost">
+          <div class="hover-details-panel">
+            <div class="product-mini-info">
+              <span class="product-mini-name">Adidas Ultraboost Light</span>
+              <span class="product-mini-price">$179.99</span>
+            </div>
+            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-title">Adidas Ultraboost Light</div>
+          <div class="product-price">$179.99 <small>USD</small></div>
+        </div>
+      </div>
+
+      <!-- Product 3 - Puma RS-X³ Puzzle -->
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500&h=500&fit=crop" alt="Puma RS-X">
+          <div class="hover-details-panel">
+            <div class="product-mini-info">
+              <span class="product-mini-name">Puma RS-X³ Puzzle</span>
+              <span class="product-mini-price">$109.95</span>
+            </div>
+            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-title">Puma RS-X³ Puzzle</div>
+          <div class="product-price">$109.95 <small>USD</small></div>
+        </div>
+      </div>
+
+      <!-- Product 4 - New Balance 574 OG -->
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=500&h=500&fit=crop" alt="New Balance 574">
+          <div class="hover-details-panel">
+            <div class="product-mini-info">
+              <span class="product-mini-name">New Balance 574 OG</span>
+              <span class="product-mini-price">$89.99</span>
+            </div>
+            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-title">New Balance 574 OG</div>
+          <div class="product-price">$89.99 <small>USD</small></div>
+        </div>
+      </div>
+    </div>
+    
+    <div style="margin-top: 16px; text-align: center; margin-bottom: 40px;">
+      <button class="btn" style="background: transparent; color:#1e1e2a; border: 1.5px solid #e43f2f;"><i class="fas fa-arrow-right"></i> Browse full collection</button>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>URBANKICKS</h4>
+        <p>Redefining streetwear & performance since 2022. Premium materials, bold design, uncompromised comfort.</p>
+        <div class="social-icons" style="margin-top: 16px;">
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-youtube"></i>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li>Men's Collection</li>
+          <li>Women's Collection</li>
+          <li>Limited Edition</li>
+          <li>Sale</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li>Shipping & Returns</li>
+          <li>Size Guide</li>
+          <li>FAQs</li>
+          <li>Contact Us</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p>Get 10% off your first order + exclusive drops</p>
+        <div style="display: flex; margin-top: 12px;">
+          <input type="email" placeholder="Your email" style="padding: 10px; border-radius: 40px 0 0 40px; border: none; flex:1; outline: none; background: #2c2c34; color: white;">
+          <button style="background: #e43f2f; border: none; padding: 0 18px; border-radius: 0 40px 40px 0; color: white; cursor: pointer; font-weight: bold;">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2025 Urban Kicks — Premium Shoe Store. Dark glass header matching footer.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
