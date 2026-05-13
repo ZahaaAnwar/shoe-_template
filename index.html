@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>Urban Kicks | Premium Shoe Store — Fully Responsive</title>
+  <title>Urban Kicks | Premium Shoe Store — Hamburger Menu</title>
   <!-- Google Fonts + Font Awesome 6 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -28,7 +28,7 @@
       padding: 0 20px;
     }
 
-    /* HEADER with dark glass style similar to footer, mobile-first adjustments */
+    /* HEADER with dark glass */
     .nav-wrapper {
       position: sticky;
       top: 0;
@@ -37,7 +37,6 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.2s ease;
     }
 
     .nav-container {
@@ -48,10 +47,8 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
     }
 
-    /* logo responsive */
     .logo {
       font-size: 1.5rem;
       font-weight: 800;
@@ -60,7 +57,6 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      transition: opacity 0.2s;
     }
     .logo span {
       background: linear-gradient(135deg, #e43f2f, #f39c12);
@@ -69,12 +65,11 @@
       color: transparent;
     }
 
+    /* Desktop navigation */
     .nav-links {
       display: flex;
-      gap: 18px;
+      gap: 28px;
       list-style: none;
-      flex-wrap: wrap;
-      justify-content: center;
     }
     .nav-links li {
       position: relative;
@@ -84,7 +79,7 @@
       font-weight: 500;
       color: #e5e7eb;
       transition: color 0.25s ease;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       padding-bottom: 4px;
       display: inline-block;
     }
@@ -107,6 +102,7 @@
       transform: translateX(-50%) scaleX(1);
     }
 
+    /* Right icons */
     .nav-icons {
       display: flex;
       gap: 18px;
@@ -115,20 +111,93 @@
     .nav-icons i {
       cursor: default;
       color: #e5e7eb;
-      transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transition: all 0.2s;
     }
     .nav-icons i:hover {
       color: #e43f2f;
       transform: translateY(-2px);
     }
 
-    /* Hero section responsive */
+    /* Hamburger button (hidden on desktop) */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #e5e7eb;
+      font-size: 1.6rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .hamburger:hover {
+      color: #e43f2f;
+    }
+
+    /* Mobile menu overlay */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 75%;
+      max-width: 300px;
+      height: 100vh;
+      background: rgba(17, 18, 23, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 1100;
+      transition: left 0.3s ease;
+      padding: 80px 28px 40px;
+      box-shadow: 2px 0 20px rgba(0,0,0,0.3);
+    }
+    .mobile-menu.active {
+      left: 0;
+    }
+    .mobile-menu .close-menu {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    .mobile-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .mobile-menu ul li a {
+      color: #e5e7eb;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .mobile-menu ul li a:hover {
+      color: #e43f2f;
+      padding-left: 5px;
+    }
+    /* overlay background */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1050;
+      display: none;
+    }
+    .menu-overlay.active {
+      display: block;
+    }
+
+    /* Hero Section responsive */
     .hero {
-      margin: 40px 0 50px 0;
+      margin: 40px 0 50px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      justify-content: space-between;
       gap: 30px;
     }
     .hero-content {
@@ -146,16 +215,14 @@
       margin-bottom: 16px;
     }
     .hero-content h1 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 16px;
-      color: #111;
     }
     .hero-content p {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: #4a4e69;
-      max-width: 100%;
       margin-bottom: 24px;
     }
     .btn {
@@ -167,10 +234,14 @@
       color: white;
       font-size: 0.9rem;
       cursor: pointer;
-      transition: 0.25s ease;
+      transition: 0.25s;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+    }
+    .btn:hover {
+      background: #e43f2f;
+      transform: translateY(-2px);
     }
     .hero-image {
       flex: 1;
@@ -179,15 +250,14 @@
     }
     .hero-image img {
       max-width: 100%;
-      width: 320px;
+      width: 300px;
       border-radius: 28px;
     }
 
-    /* section title responsive */
     .section-title {
       font-size: 1.8rem;
       font-weight: 700;
-      margin: 40px 0 24px 0;
+      margin: 40px 0 24px;
       position: relative;
       display: inline-block;
     }
@@ -202,7 +272,7 @@
       border-radius: 4px;
     }
 
-    /* product grid: single column on mobile, two on tablet, three+ on desktop */
+    /* Product grid responsive */
     .products-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -210,54 +280,47 @@
       margin-bottom: 60px;
     }
 
-    /* card adjustments for touch */
     .product-card {
       background: white;
       border-radius: 24px;
       overflow: hidden;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
     }
     .product-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 28px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 16px 28px rgba(0,0,0,0.1);
     }
-
     .product-img-wrapper {
       position: relative;
       overflow: hidden;
-      background: #f0f0f4;
       height: 260px;
-      border-radius: 24px 24px 0 0;
+      background: #f0f0f4;
     }
     .product-img-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.5s;
     }
     .product-card:hover .product-img-wrapper img {
       transform: scale(1.05);
     }
-
-    /* Details panel: bottom 15% height, blurred */
     .hover-details-panel {
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 18%;   /* slightly bigger on mobile for easier touch */
+      height: 18%;
       min-height: 52px;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0,0,0,0.5);
       backdrop-filter: blur(14px);
-      border-radius: 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 12px;
-      gap: 10px;
       transform: translateY(100%);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s;
       pointer-events: none;
     }
     .product-card:hover .hover-details-panel {
@@ -269,27 +332,24 @@
     .product-mini-info {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
       gap: 2px;
-      overflow: hidden;
     }
     .product-mini-name {
       font-size: 0.8rem;
       font-weight: 600;
       color: white;
       white-space: nowrap;
-      text-overflow: ellipsis;
       overflow: hidden;
+      text-overflow: ellipsis;
       max-width: 140px;
     }
     .product-mini-price {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: #ffd966;
     }
     .add-to-cart {
       background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(4px);
       border: 1px solid rgba(255,255,255,0.5);
       border-radius: 40px;
       padding: 5px 12px;
@@ -299,15 +359,13 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      transition: 0.2s;
       cursor: pointer;
-      white-space: nowrap;
+      transition: 0.2s;
     }
     .add-to-cart:hover {
       background: white;
       color: #1e1e2a;
     }
-
     .product-info {
       padding: 16px;
       background: white;
@@ -322,14 +380,11 @@
       font-weight: 800;
       color: #e43f2f;
     }
-    .product-price small {
-      font-size: 0.7rem;
-    }
 
-    /* footer responsive */
+    /* Footer */
     .footer {
       background: #111217;
-      color: #dddddd;
+      color: #ddd;
       padding: 40px 0 24px;
       margin-top: 40px;
       border-top-left-radius: 28px;
@@ -338,17 +393,16 @@
     .footer-grid {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
       gap: 28px;
+      justify-content: space-between;
     }
     .footer-col {
       flex: 1;
-      min-width: 160px;
+      min-width: 150px;
     }
     .footer-col h4 {
       color: white;
       margin-bottom: 12px;
-      font-weight: 600;
       font-size: 1rem;
     }
     .footer-col p, .footer-col ul {
@@ -368,7 +422,6 @@
     }
     .social-icons i:hover {
       color: #e43f2f;
-      transform: translateY(-2px);
     }
     .copyright {
       text-align: center;
@@ -379,113 +432,76 @@
       margin-top: 32px;
     }
 
-    /* tablet and desktop media queries */
+    /* Tablet+ */
     @media (min-width: 550px) {
       .products-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
       }
       .hero-content h1 {
-        font-size: 2.6rem;
+        font-size: 2.4rem;
       }
       .hero-content {
         text-align: left;
       }
-      .hero {
-        gap: 40px;
+    }
+    @media (min-width: 768px) {
+      .hamburger {
+        display: none;
+      }
+      .nav-links {
+        display: flex !important;
+      }
+      .mobile-menu, .menu-overlay {
+        display: none;
       }
     }
-
     @media (min-width: 900px) {
       .products-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 28px;
       }
       .hero-content h1 {
         font-size: 3rem;
       }
-      .nav-container {
-        padding: 18px 24px;
-      }
       .logo {
         font-size: 1.8rem;
       }
-      .nav-links a {
-        font-size: 1rem;
-      }
     }
-
     @media (min-width: 1100px) {
       .products-grid {
         grid-template-columns: repeat(4, 1fr);
       }
     }
-
-    /* touch devices: ensure panel works on tap (no hover persistence issue) */
-    @media (hover: hover) {
-      .product-card:hover .hover-details-panel {
-        transform: translateY(0);
+    /* Mobile styles: hide desktop nav-links, show hamburger */
+    @media (max-width: 767px) {
+      .nav-links {
+        display: none;
       }
-    }
-    /* for touch screens, we keep the panel hidden unless active, but hover works fine */
-    @media (max-width: 480px) {
-      .container {
-        padding: 0 16px;
+      .hamburger {
+        display: block;
       }
       .nav-container {
-        padding: 10px 16px;
-      }
-      .nav-links {
-        gap: 14px;
-      }
-      .nav-links a {
-        font-size: 0.75rem;
-      }
-      .nav-icons {
-        gap: 14px;
-        font-size: 1rem;
-      }
-      .hero-content h1 {
-        font-size: 1.9rem;
+        padding: 12px 16px;
       }
       .hero-image img {
         width: 260px;
       }
       .product-img-wrapper {
-        height: 230px;
+        height: 220px;
+      }
+      .hover-details-panel {
+        height: 20%;
+        min-height: 48px;
       }
       .product-mini-name {
-        font-size: 0.7rem;
         max-width: 110px;
+        font-size: 0.7rem;
       }
-      .product-mini-price {
-        font-size: 0.75rem;
-      }
-      .add-to-cart {
-        padding: 4px 10px;
-        font-size: 0.65rem;
-      }
-      .section-title {
-        font-size: 1.5rem;
-      }
-      .footer-grid {
-        flex-direction: column;
-        gap: 24px;
-      }
-    }
-
-    /* newsletter input responsive */
-    .footer-col div[style*="display: flex"] {
-      flex-wrap: wrap;
-    }
-    .footer-col input {
-      min-width: 140px;
     }
   </style>
 </head>
 <body>
 
-<!-- Header with dark glass matching footer -->
+<!-- Header with dark glass -->
 <div class="nav-wrapper">
   <div class="nav-container">
     <div class="logo">URBAN<span>KICKS</span></div>
@@ -500,9 +516,23 @@
       <i class="fas fa-search"></i>
       <i class="fas fa-user"></i>
       <i class="fas fa-shopping-bag"></i>
+      <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
     </div>
   </div>
 </div>
+
+<!-- Mobile Menu (hidden by default) -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></button>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Shop</a></li>
+    <li><a href="#">New Arrivals</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</div>
+<div class="menu-overlay" id="menuOverlay"></div>
 
 <main class="container">
   <!-- Hero Section -->
@@ -510,7 +540,7 @@
     <div class="hero-content">
       <div class="badge"><i class="fas fa-fire"></i> Summer Collection 2025</div>
       <h1>Step Into <br>Ultimate Comfort</h1>
-      <p>Engineered for performance & style. Discover the next generation of sneakers crafted with premium materials and futuristic design.</p>
+      <p>Engineered for performance & style. Discover the next generation of sneakers crafted with premium materials.</p>
       <button class="btn">Shop Now <i class="fas fa-arrow-right"></i></button>
     </div>
     <div class="hero-image">
@@ -522,8 +552,7 @@
   <div>
     <h2 class="section-title">Premium Footwear</h2>
     <div class="products-grid">
-      
-      <!-- Product 1 - Nike Air Max Pulse -->
+      <!-- Product 1 -->
       <div class="product-card">
         <div class="product-img-wrapper">
           <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop" alt="Nike Air Max">
@@ -540,14 +569,13 @@
           <div class="product-price">$139.99 <small>USD</small></div>
         </div>
       </div>
-
-      <!-- Product 2 - Adidas Ultraboost Light -->
+      <!-- Product 2 -->
       <div class="product-card">
         <div class="product-img-wrapper">
           <img src="https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=500&h=500&fit=crop" alt="Adidas Ultraboost">
           <div class="hover-details-panel">
             <div class="product-mini-info">
-              <span class="product-mini-name">Adidas Ultraboost Light</span>
+              <span class="product-mini-name">Adidas Ultraboost</span>
               <span class="product-mini-price">$179.99</span>
             </div>
             <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add</button>
@@ -558,8 +586,7 @@
           <div class="product-price">$179.99 <small>USD</small></div>
         </div>
       </div>
-
-      <!-- Product 3 - Puma RS-X³ Puzzle -->
+      <!-- Product 3 -->
       <div class="product-card">
         <div class="product-img-wrapper">
           <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500&h=500&fit=crop" alt="Puma RS-X">
@@ -576,11 +603,10 @@
           <div class="product-price">$109.95 <small>USD</small></div>
         </div>
       </div>
-
-      <!-- Product 4 - New Balance 574 OG -->
+      <!-- Product 4 -->
       <div class="product-card">
         <div class="product-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=500&h=500&fit=crop" alt="New Balance 574">
+          <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=500&h=500&fit=crop" alt="New Balance">
           <div class="hover-details-panel">
             <div class="product-mini-info">
               <span class="product-mini-name">New Balance 574 OG</span>
@@ -595,59 +621,80 @@
         </div>
       </div>
     </div>
-    
-    <div style="margin-top: 16px; text-align: center; margin-bottom: 40px;">
+    <div style="text-align: center; margin-bottom: 40px;">
       <button class="btn" style="background: transparent; color:#1e1e2a; border: 1.5px solid #e43f2f;"><i class="fas fa-arrow-right"></i> Browse full collection</button>
     </div>
   </div>
 </main>
 
-<!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
         <h4>URBANKICKS</h4>
-        <p>Redefining streetwear & performance since 2022. Premium materials, bold design, uncompromised comfort.</p>
+        <p>Premium sneakers for the modern era.</p>
         <div class="social-icons" style="margin-top: 12px;">
           <i class="fab fa-instagram"></i>
           <i class="fab fa-twitter"></i>
           <i class="fab fa-facebook-f"></i>
-          <i class="fab fa-youtube"></i>
         </div>
       </div>
       <div class="footer-col">
         <h4>Shop</h4>
-        <ul>
-          <li>Men's Collection</li>
-          <li>Women's Collection</li>
-          <li>Limited Edition</li>
-          <li>Sale</li>
-        </ul>
+        <ul><li>Men</li><li>Women</li><li>Limited</li><li>Sale</li></ul>
       </div>
       <div class="footer-col">
         <h4>Support</h4>
-        <ul>
-          <li>Shipping & Returns</li>
-          <li>Size Guide</li>
-          <li>FAQs</li>
-          <li>Contact Us</li>
-        </ul>
+        <ul><li>Shipping</li><li>Returns</li><li>Size Guide</li><li>Contact</li></ul>
       </div>
       <div class="footer-col">
         <h4>Newsletter</h4>
-        <p>Get 10% off your first order</p>
-        <div style="display: flex; margin-top: 10px; flex-wrap: wrap; gap: 8px;">
-          <input type="email" placeholder="Your email" style="padding: 8px 12px; border-radius: 40px; border: none; flex:1; outline: none; background: #2c2c34; color: white; font-size: 0.8rem;">
-          <button style="background: #e43f2f; border: none; padding: 8px 16px; border-radius: 40px; color: white; cursor: pointer; font-weight: 600;">→</button>
+        <p>Get 10% off</p>
+        <div style="display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;">
+          <input type="email" placeholder="Email" style="padding: 8px 12px; border-radius: 40px; border: none; background: #2c2c34; color: white; flex:1;">
+          <button style="background: #e43f2f; border: none; padding: 8px 16px; border-radius: 40px; color: white;">→</button>
         </div>
       </div>
     </div>
-    <div class="copyright">
-      © 2025 Urban Kicks — Premium Shoe Store. Fully responsive for mobile & desktop.
-    </div>
+    <div class="copyright">© 2025 Urban Kicks — All rights reserved.</div>
   </div>
 </footer>
 
+<script>
+  // Hamburger menu functionality for mobile devices
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+  function openMenu() {
+    mobileMenu.classList.add('active');
+    menuOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    mobileMenu.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener('click', openMenu);
+  }
+  if (closeMenuBtn) {
+    closeMenuBtn.addEventListener('click', closeMenu);
+  }
+  if (menuOverlay) {
+    menuOverlay.addEventListener('click', closeMenu);
+  }
+
+  // Close on window resize if open (optional)
+  window.addEventListener('resize', function() {
+    if (window.innerWidth >= 768) {
+      closeMenu();
+    }
+  });
+</script>
 </body>
 </html>
